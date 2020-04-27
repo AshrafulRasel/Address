@@ -37,8 +37,11 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
+        $id = $request->id;
+        $contact_id = $request->contact; 
+
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:addresses,name,'.$id.',id,contact_id,'.$contact_id,
             'street' => 'required',
         ]);
 
