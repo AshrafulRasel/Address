@@ -37,9 +37,13 @@ class PhoneController extends Controller
      */
     public function store(Request $request)
     {
+        
+        $id = $request->id;
+        $contact_id = $request->contact; 
+
         $request->validate([
-            'name' => 'required|max:60|unique:phones,contact_id,'.$request->contact,
-            'number' => 'required|regex:/(0)[0-9]/|not_regex:/[a-z]/|min:9',
+            'name' => 'required|unique:phones,name,'.$id.',id,contact_id,'.$contact_id,
+            'street' => 'required',
         ]);
 
         $phone = new Phone();
