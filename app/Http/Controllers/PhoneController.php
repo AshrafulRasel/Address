@@ -39,7 +39,7 @@ class PhoneController extends Controller
     {
         
         $id = $request->id;
-        $contact_id = $request->contact; 
+        $contact_id = $request->contact_id; 
 
         $request->validate([
             'name' => 'required|unique:phones,name,'.$id.',id,contact_id,'.$contact_id,
@@ -51,10 +51,10 @@ class PhoneController extends Controller
         $phone = new Phone();
         $phone->name = $request->name;
         $phone->number = $request->number;
-        $phone->contact_id = $request->contact;
+        $phone->contact = $request->contact_id;
 
         $phone->save();
-        return redirect()->route('phonelist', [$request->contact])
+        return redirect()->route('phonelist', [$request->contact_d])
                         ->with('success','Address created successfully.');
     }
 
