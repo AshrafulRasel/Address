@@ -44,6 +44,7 @@ class PhoneController extends Controller
         $request->validate([
             'name' => 'required|unique:phones,name,'.$id.',id,contact_id,'.$contact_id,
             'number' => 'required|regex:/(0)[0-9]/|not_regex:/[a-z]/|min:9',
+            'contact_id' =>'required|numeric'
 
         ]);
 
