@@ -43,7 +43,12 @@ class AddressController extends Controller
         $request->validate([
             'name' => 'required|unique:addresses,name,'.$id.',id,contact_id,'.$contact_id,
             'street' => 'required',
-        ]);
+            'contact' => 'required|numeric',
+            'city' => 'required',
+            'street' => 'required',
+            'zip' => 'required',
+            'country' => 'required'
+         ]);
 
         $address = new Address();
         $address->name = $request->name;
